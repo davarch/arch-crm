@@ -19,7 +19,6 @@ final class TeamFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => $this->faker->uuid,
             'name' => $this->faker->word,
             'department_id' => Department::query()->inRandomOrder()->value('id'),
         ];

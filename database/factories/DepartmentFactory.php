@@ -19,7 +19,6 @@ final class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => $this->faker->uuid,
             'name' => $this->faker->word,
             'company_id' => Company::query()->inRandomOrder()->value('id'),
         ];

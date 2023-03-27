@@ -18,7 +18,6 @@ final class ContactFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => $this->faker->uuid,
             'title' => $this->faker->word,
             'first_name' => $this->faker->firstName,
             'middle_name' => $this->faker->word,
