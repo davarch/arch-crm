@@ -33,8 +33,8 @@ git-hooks:
 	cp hooks/pre-commit .git/hooks/pre-commit
 	chmod +x .git/hooks/pre-commit
 
-insights:
-	./vendor/bin/sail composer insights
+analyse:
+	./vendor/bin/sail artisan insights
 
 stan:
 	./vendor/bin/sail composer stan

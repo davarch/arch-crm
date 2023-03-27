@@ -14,7 +14,8 @@
         "laravel/sanctum": "^3.2",
         "laravel/telescope": "^4.14",
         "laravel/tinker": "^2.8",
-        "spatie/laravel-data": "*"
+        "spatie/laravel-data": "*",
+        "timacdonald/json-api": "^1.0@beta"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
@@ -89,6 +90,6 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
