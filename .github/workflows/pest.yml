@@ -10,6 +10,22 @@ jobs:
   pest:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: 'postgres:15'
+        env:
+          POSTGRES_DB: postgres_db
+          POSTGRES_PASSWORD: postgres_password
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: postgres_user
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - uses: actions/checkout@v3
       - uses: shivammathur/setup-php@v2
@@ -19,13 +35,13 @@ jobs:
       - run: composer install --prefer-dist --no-progress --no-suggest
       - run: php artisan key:generate
       - run: chmod -R 777 storage bootstrap/cache
-      - run: |
-          mkdir -p database
-          touch database/database.sqlite
       - name: Run pest tests
         env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
+          DB_CONNECTION: pgsql
+          DB_DATABASE: postgres_db
+          DB_PORT: 5432
+          DB_USER: postgres_user
+          DB_PASSWORD: postgres_password
         run: vendor/bin/pest
 
 
