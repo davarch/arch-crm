@@ -16,6 +16,7 @@
         "laravel/telescope": "^4.14",
         "laravel/tinker": "^2.8",
         "spatie/laravel-data": "*",
+        "spatie/laravel-event-sourcing": "^7.3",
         "timacdonald/json-api": "^1.0@beta"
     },
     "require-dev": {

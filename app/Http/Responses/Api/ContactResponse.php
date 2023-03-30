@@ -14,11 +14,11 @@ final class ContactResponse implements Responsable
 {
     public function __construct(
         public readonly JsonResource $resource,
-        public readonly Http $status
+        public readonly Http $status = Http::OK
     ) {
     }
 
-    public static function make(JsonResource $resource, Http $status): ContactResponse
+    public static function make(JsonResource $resource, Http $status = Http::OK): ContactResponse
     {
         return new self(
             resource: $resource,

@@ -9,7 +9,6 @@ use App\Http\Resources\Api\ContactResource;
 use App\Http\Responses\Api\ContactResponse;
 use App\Models\Contact;
 use Illuminate\Contracts\Support\Responsable;
-use JustSteveKing\StatusCode\Http;
 
 final class IndexController extends Controller
 {
@@ -18,8 +17,7 @@ final class IndexController extends Controller
         $contacts = Contact::query()->paginate();
 
         return ContactResponse::make(
-            resource: ContactResource::collection($contacts),
-            status: Http::OK
+            resource: ContactResource::collection($contacts)
         );
     }
 }

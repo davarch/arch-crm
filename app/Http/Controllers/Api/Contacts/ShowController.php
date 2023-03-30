@@ -9,17 +9,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ContactResource;
 use App\Http\Responses\Api\ContactResponse;
 use Illuminate\Contracts\Support\Responsable;
-use JustSteveKing\StatusCode\Http;
 
 final class ShowController extends Controller
 {
     public function __invoke(GetContactByUuid $contactByUuid, string $uuid): Responsable
     {
         return ContactResponse::make(
-            resource: ContactResource::make(
-                $contactByUuid($uuid)
-            ),
-            status: Http::OK
+            resource: ContactResource::make($contactByUuid($uuid))
         );
     }
 }

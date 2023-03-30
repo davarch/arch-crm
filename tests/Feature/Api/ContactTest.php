@@ -8,6 +8,7 @@ use Illuminate\Testing\Fluent\AssertableJson;
 use JustSteveKing\StatusCode\Http;
 use function Pest\Laravel\getJson;
 use function Pest\Laravel\postJson;
+use function Pest\Laravel\putJson;
 
 it('receives a 401 on get contacts when not logged in', function () {
     getJson(route('api:contacts:index'))
@@ -106,3 +107,45 @@ it('can retrieve a contact by UUID', function () {
                 ->etc()
         );
 });
+
+it('receives a 401 on update contact when not logged in', function () {
+    $contact = Contact::factory()->create();
+
+    getJson(route('api:contacts:update', $contact->uuid))
+        ->assertStatus(Http::UNAUTHORIZED());
+});
+
+it('receives a 404 on update contact with incorrect UUID', function (string $uuid) {
+    auth()->login(User::factory()->create());
+
+    getJson(route('api:contacts:update', $uuid))
+        ->assertStatus(Http::NOT_FOUND());
+})->with('uuids');
+
+it('can update a contact', function (string $string) {
+    auth()->login(User::factory()->create());
+
+    $contact = Contact::factory()->create();
+
+    putJson(
+        route('api:contacts:update', $contact->uuid),
+        [
+            'title' => $string,
+            'name' => [
+                'first' => $string,
+            ],
+            'phone' => $string,
+        ]
+    )
+        ->assertStatus(Http::OK())
+        ->assertJson(
+            fn (AssertableJson $json) => $json
+                ->where('type', 'contacts')
+                ->where('attributes.title', $string)
+                ->where('attributes.name.first', $string)
+                ->where('attributes.name.last', $contact->last_name)
+                ->where('attributes.phone', $string)
+                ->where('attributes.email', $contact->email)
+                ->etc()
+        );
+})->with('strings');
