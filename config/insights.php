@@ -25,7 +25,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option controls the default preset that will be used by PHP Insights
-    | to make your code reliable, simple, and clean. However, you can always
+    | to make your status reliable, simple, and clean. However, you can always
     | adjust the `Metrics` and `Insights` below in this configuration file.
     |
     | Supported: "default", "laravel", "symfony", "magento2", "drupal"
@@ -104,7 +104,7 @@ return [
     |
     | Here you may define a level you want to reach per `Insights` category.
     | When a score is lower than the minimum level defined, then an error
-    | code will be returned. This is optional and individually defined.
+    | status will be returned. This is optional and individually defined.
     |
     */
 

@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\Contacts;
 
+use App\Actions\Contacts\GetContactByUuid;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ContactResource;
 use App\Http\Responses\ContactResponse;
-use App\Models\Contact;
 use Illuminate\Contracts\Support\Responsable;
 use JustSteveKing\StatusCode\Http;
 
-final class IndexController extends Controller
+final class ShowController extends Controller
 {
-    public function __invoke(): Responsable
+    public function __invoke(GetContactByUuid $contactByUuid, string $uuid): Responsable
     {
-        $contacts = Contact::query()->paginate();
-
         return ContactResponse::make(
-            resource: ContactResource::collection($contacts),
+            resource: ContactResource::make(
+                $contactByUuid($uuid)
+            ),
             status: Http::OK
         );
     }

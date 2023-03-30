@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Api\Contacts\IndexController as ContactIndex;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')
@@ -10,7 +9,13 @@ Route::middleware('auth:sanctum')
         Route::prefix('contacts')
             ->as('contacts:')
             ->group(function () {
-                Route::get('/', ContactIndex::class)
+                Route::get('/', \App\Http\Controllers\Api\Contacts\IndexController::class)
                     ->name('index');
+
+                Route::get('{uuid}', \App\Http\Controllers\Api\Contacts\ShowController::class)
+                    ->name('show');
+
+                Route::post('/', \App\Http\Controllers\Api\Contacts\StoreController::class)
+                    ->name('store');
             });
     });

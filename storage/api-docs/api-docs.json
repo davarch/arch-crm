@@ -1,10 +1,19 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Laravel Skeleton",
+        "title": "Arch CRM",
         "version": "0.0.1"
     },
     "paths": {
-        "/": {}
+        "/api/contacts": {
+            "post": {
+                "operationId": "create-new-contact",
+                "responses": {
+                    "201": {
+                        "description": "contacts"
+                    }
+                }
+            }
+        }
     }
 }
