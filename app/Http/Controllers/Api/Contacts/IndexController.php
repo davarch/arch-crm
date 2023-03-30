@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api\Contacts;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ContactResource;
-use App\Http\Responses\ContactResponse;
+use App\Http\Responses\Api\ContactResponse;
 use App\Models\Contact;
 use Illuminate\Contracts\Support\Responsable;
 use JustSteveKing\StatusCode\Http;

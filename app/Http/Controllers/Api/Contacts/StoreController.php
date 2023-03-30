@@ -8,7 +8,7 @@ use App\Actions\Contacts\CreateNewContact;
 use App\DataTransferObjects\ContactData;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ContactResource;
-use App\Http\Responses\ContactResponse;
+use App\Http\Responses\Api\ContactResponse;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use JustSteveKing\StatusCode\Http;
