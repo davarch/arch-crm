@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\Contacts;
 
-use App\Actions\Contacts\UpdateContact;
-use App\DataTransferObjects\ContactData;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\ContactResource;
 use App\Http\Responses\Api\ContactResponse;
+use Domains\Contacts\Actions\UpdateContact;
+use Domains\Contacts\Aggregates\ContactAggregate;
+use Domains\Contacts\DataTransferObjects\ContactData;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
+use JustSteveKing\StatusCode\Http;
 
 final class UpdateController extends Controller
 {
@@ -21,10 +22,12 @@ final class UpdateController extends Controller
     ): Responsable {
         $data = ContactData::validateAndCreate($request);
 
+        ContactAggregate::retrieve(uuid: $uuid)
+            ->updateContact(uuid: $uuid, data: $data)
+            ->persist();
+
         return ContactResponse::make(
-            resource: ContactResource::make(
-                $updateContact($uuid, $data)
-            )
+            status: Http::ACCEPTED
         );
     }
 }

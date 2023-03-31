@@ -16,9 +16,11 @@ Route::middleware('auth:sanctum')
                     ->name('store');
 
                 Route::get('{uuid}', \App\Http\Controllers\Api\Contacts\ShowController::class)
+                    ->whereUuid('uuid')
                     ->name('show');
 
                 Route::put('{uuid}', \App\Http\Controllers\Api\Contacts\UpdateController::class)
+                    ->whereUuid('uuid')
                     ->name('update');
             });
     });

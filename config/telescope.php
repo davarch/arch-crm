@@ -7,7 +7,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Telescope Domain
+    | Telescope Domains
     |--------------------------------------------------------------------------
     |
     | This is the subdomain where Telescope will be accessible from. If the

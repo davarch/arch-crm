@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Actions\Contacts;
+namespace Domains\Contacts\Actions;
 
-use App\Contracts\DataTransferObject;
 use App\Models\Contact;
 use Illuminate\Database\Eloquent\Model;
+use Infrastructure\Contracts\DataTransferObject;
 
 final class CreateNewContact
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\DataTransferObjects;
+namespace Domains\Contacts\DataTransferObjects;
 
-use App\Contracts\DataTransferObject;
+use Infrastructure\Contracts\DataTransferObject;
 use Spatie\LaravelData\Attributes\MapInputName;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Attributes\Validation\Email;

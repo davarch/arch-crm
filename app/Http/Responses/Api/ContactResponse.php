@@ -13,12 +13,12 @@ use Symfony\Component\HttpFoundation\Response;
 final class ContactResponse implements Responsable
 {
     public function __construct(
-        public readonly JsonResource $resource,
+        public readonly ?JsonResource $resource = null,
         public readonly Http $status = Http::OK
     ) {
     }
 
-    public static function make(JsonResource $resource, Http $status = Http::OK): ContactResponse
+    public static function make(?JsonResource $resource = null, Http $status = Http::OK): ContactResponse
     {
         return new self(
             resource: $resource,
