@@ -75,7 +75,7 @@
             "./vendor/bin/pint"
         ],
         "pest": [
-            "./vendor/bin/pest"
+            "./vendor/bin/pest --coverage"
         ]
     },
     "extra": {
