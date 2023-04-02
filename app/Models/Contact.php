@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Models\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 final class Contact extends Model
@@ -16,7 +17,7 @@ final class Contact extends Model
     use SoftDeletes;
 
     /**
-     * @var array<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'uuid',
@@ -28,4 +29,15 @@ final class Contact extends Model
         'email',
         'phone',
     ];
+
+    /**
+     * @return HasMany<Interaction>
+     */
+    public function interactions(): HasMany
+    {
+        return $this->hasMany(
+            related: Interaction::class,
+            foreignKey: 'contact_id',
+        );
+    }
 }

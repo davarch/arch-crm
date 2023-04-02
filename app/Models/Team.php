@@ -16,7 +16,7 @@ final class Team extends Model
     use SoftDeletes;
 
     /**
-     * @var array<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'uuid',

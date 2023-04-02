@@ -12,7 +12,7 @@ return new class extends Migration
     {
         Schema::create('job_titles', static function (Blueprint $table) {
             $table->id();
-            $table->uuid();
+            $table->uuid()->unique();
             $table->string('name');
             $table->timestamps();
         });

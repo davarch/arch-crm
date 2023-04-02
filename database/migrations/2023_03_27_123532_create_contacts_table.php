@@ -12,7 +12,7 @@ return new class extends Migration
     {
         Schema::create('contacts', static function (Blueprint $table) {
             $table->id();
-            $table->uuid();
+            $table->uuid()->unique();
             $table->string('title')->nullable();
             $table->string('first_name');
             $table->string('middle_name')->nullable();

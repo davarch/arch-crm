@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Api\Contacts;
 
 use App\Http\Controllers\Controller;
 use App\Http\Responses\Api\ContactResponse;
-use Domains\Contacts\Actions\CreateNewContact;
 use Domains\Contacts\Aggregates\ContactAggregate;
 use Domains\Contacts\DataTransferObjects\ContactData;
 use Illuminate\Contracts\Support\Responsable;
@@ -16,7 +15,7 @@ use Str;
 
 final class StoreController extends Controller
 {
-    public function __invoke(Request $request, CreateNewContact $createNewContact): Responsable
+    public function __invoke(Request $request): Responsable
     {
         $data = ContactData::validateAndCreate(payload: $request);
 

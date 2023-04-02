@@ -23,4 +23,22 @@ Route::middleware('auth:sanctum')
                     ->whereUuid('uuid')
                     ->name('update');
             });
+
+        Route::prefix('interactions')
+            ->as('interactions:')
+            ->group(function () {
+                Route::get('/', \App\Http\Controllers\Api\Interactions\IndexController::class)
+                    ->name('index');
+
+                Route::post('/', \App\Http\Controllers\Api\Interactions\StoreController::class)
+                    ->name('store');
+
+                Route::get('{uuid}', \App\Http\Controllers\Api\Interactions\ShowController::class)
+                    ->whereUuid('uuid')
+                    ->name('show');
+
+                Route::put('{uuid}', \App\Http\Controllers\Api\Interactions\UpdateController::class)
+                    ->whereUuid('uuid')
+                    ->name('update');
+            });
     });

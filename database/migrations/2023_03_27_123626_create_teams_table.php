@@ -12,7 +12,7 @@ return new class extends Migration
     {
         Schema::create('teams', static function (Blueprint $table) {
             $table->id();
-            $table->uuid();
+            $table->uuid()->unique();
             $table->string('name');
 
             $table->foreignId('department_id')

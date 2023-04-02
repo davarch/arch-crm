@@ -14,7 +14,7 @@ final class JobTitle extends Model
     use HasFactory;
 
     /**
-     * @var array<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'uuid',

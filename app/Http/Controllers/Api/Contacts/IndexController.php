@@ -17,7 +17,7 @@ final class IndexController extends Controller
         $contacts = Contact::query()->paginate();
 
         return ContactResponse::make(
-            resource: ContactResource::collection($contacts)
+            data: ContactResource::collection($contacts)
         );
     }
 }

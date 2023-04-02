@@ -4,33 +4,20 @@ declare(strict_types=1);
 
 namespace App\Http\Responses\Api;
 
+use App\Concerns\Makeable;
+use App\Http\Responses\Api\Concerns\SendsJsonResponse;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JustSteveKing\StatusCode\Http;
-use Symfony\Component\HttpFoundation\Response;
 
 final class ContactResponse implements Responsable
 {
+    use Makeable;
+    use SendsJsonResponse;
+
     public function __construct(
-        public readonly ?JsonResource $resource = null,
+        public readonly ?JsonResource $data = null,
         public readonly Http $status = Http::OK
     ) {
-    }
-
-    public static function make(?JsonResource $resource = null, Http $status = Http::OK): ContactResponse
-    {
-        return new self(
-            resource: $resource,
-            status: $status
-        );
-    }
-
-    public function toResponse($request): Response
-    {
-        return new JsonResponse(
-            data: $this->resource,
-            status: $this->status->value
-        );
     }
 }

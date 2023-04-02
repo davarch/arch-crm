@@ -15,7 +15,7 @@ final class ShowController extends Controller
     public function __invoke(GetContactByUuid $contactByUuid, string $uuid): Responsable
     {
         return ContactResponse::make(
-            resource: ContactResource::make($contactByUuid($uuid))
+            data: ContactResource::make($contactByUuid($uuid))
         );
     }
 }
